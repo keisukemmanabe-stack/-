@@ -1,0 +1,667 @@
+/* =========================
+   Base Settings
+========================= */
+
+:root {
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-heading: #0f172a;
+  --color-text: #334155;
+  --color-muted: #64748b;
+  --color-primary: #2563eb;
+  --color-primary-dark: #1e3a8a;
+  --color-accent: #06b6d4;
+  --color-border: #e2e8f0;
+  --color-footer: #0f172a;
+
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 12px 28px rgba(15, 23, 42, 0.12);
+
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --container-width: 1120px;
+}
+
+/* ブラウザごとの差を小さくする */
+* {
+  box-sizing: border-box;
+}
+
+/* ページ内リンクを滑らかに移動させる */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 全体の基本設定 */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.8;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* 画像を使う場合に備えた基本設定 */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* リンクの基本設定 */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* 見出し */
+h1,
+h2,
+h3 {
+  color: var(--color-heading);
+  line-height: 1.3;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 1.25rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* セクションの共通レイアウト */
+section {
+  width: min(100% - 32px, var(--container-width));
+  margin: 0 auto;
+  padding: 72px 0;
+}
+
+/* =========================
+   Header / Navigation
+========================= */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px max(24px, calc((100% - var(--container-width)) / 2));
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+nav a:hover {
+  color: var(--color-primary);
+}
+
+/* =========================
+   Hero
+========================= */
+
+#hero {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  align-content: center;
+  gap: 20px;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+#hero > p:first-child {
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+#hero h2 {
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  margin-bottom: 0;
+  letter-spacing: 0.03em;
+}
+
+#hero h2 + p {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+}
+
+#hero p {
+  max-width: 720px;
+  font-size: 1.05rem;
+}
+
+#hero p:nth-of-type(3) {
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: var(--color-heading);
+  line-height: 1.6;
+}
+
+#hero a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--color-primary);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+#hero a:hover {
+  color: #ffffff;
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================
+   About
+========================= */
+
+#about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+  gap: 32px;
+  align-items: start;
+}
+
+#about > h2 {
+  grid-column: 1 / -1;
+}
+
+#about > p {
+  max-width: 720px;
+}
+
+#about section {
+  width: 100%;
+  margin: 0;
+  padding: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+dl {
+  margin: 0;
+}
+
+dt {
+  margin-top: 16px;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+dt:first-child {
+  margin-top: 0;
+}
+
+dd {
+  margin: 4px 0 0;
+  color: var(--color-heading);
+  font-weight: 600;
+}
+
+/* =========================
+   Card Sections
+========================= */
+
+#interests,
+#hobbies {
+  width: 100%;
+  max-width: none;
+  padding-left: max(16px, calc((100% - var(--container-width)) / 2));
+  padding-right: max(16px, calc((100% - var(--container-width)) / 2));
+}
+
+#interests {
+  background: #eef6ff;
+}
+
+#hobbies {
+  background: #f1f5f9;
+}
+
+#interests > p,
+#learning > p,
+#hobbies > p,
+#experiences > p {
+  max-width: 760px;
+  color: var(--color-muted);
+}
+
+#interests article,
+#learning article,
+#hobbies article {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* カードのホバーエフェクト */
+#interests article:hover,
+#learning article:hover,
+#hobbies article:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: var(--shadow-md);
+}
+
+/* Interestsは4枚カード */
+#interests {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+#interests h2,
+#interests > p {
+  grid-column: 1 / -1;
+}
+
+/* Learningは3枚カード */
+#learning {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+#learning h2,
+#learning > p {
+  grid-column: 1 / -1;
+}
+
+/* Hobbiesは3枚カード */
+#hobbies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+#hobbies h2,
+#hobbies > p {
+  grid-column: 1 / -1;
+}
+
+#interests article h3,
+#learning article h3,
+#hobbies article h3 {
+  position: relative;
+  padding-left: 14px;
+}
+
+#interests article h3::before,
+#learning article h3::before,
+#hobbies article h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  width: 4px;
+  height: 1.1em;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+}
+
+/* =========================
+   Experiences
+========================= */
+
+#experiences article {
+  position: relative;
+  margin-left: 22px;
+  padding: 0 0 32px 32px;
+  border-left: 2px solid var(--color-border);
+}
+
+#experiences article:last-child {
+  padding-bottom: 0;
+}
+
+#experiences article::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 5px #dbeafe;
+}
+
+#experiences h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* =========================
+   Future Goals
+========================= */
+
+#future {
+  width: min(100% - 32px, 920px);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 48px;
+  background: linear-gradient(135deg, #ffffff, #eff6ff);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+#future h2 {
+  color: var(--color-primary-dark);
+}
+
+#future p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+  padding: 32px 16px;
+  text-align: center;
+  color: #cbd5e1;
+  background: var(--color-footer);
+}
+
+footer p {
+  margin: 0;
+}
+
+/* =========================
+   Responsive Design
+========================= */
+
+/* タブレット向け */
+@media (max-width: 1024px) {
+  #interests {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #learning,
+  #hobbies {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* スマートフォン向け */
+@media (max-width: 768px) {
+  header {
+    position: static;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 10px 16px;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  section {
+    width: min(100% - 32px, var(--container-width));
+    padding: 56px 0;
+  }
+
+  #hero {
+    min-height: auto;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  #about {
+    grid-template-columns: 1fr;
+  }
+
+  #interests,
+  #learning,
+  #hobbies {
+    grid-template-columns: 1fr;
+  }
+
+  #future {
+    padding: 32px 24px;
+  }
+}
+
+/* 小さいスマートフォン向け */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.65rem;
+  }
+
+  #hero h2 {
+    font-size: 2.4rem;
+  }
+
+  #interests article,
+  #learning article,
+  #hobbies article {
+    padding: 22px;
+  }
+
+  #experiences article {
+    margin-left: 14px;
+    padding-left: 24px;
+  }
+}
+
+/* =========================
+   Step 7: JavaScript Interaction Styles
+========================= */
+
+/* ダークモード切り替えボタン */
+#theme-toggle {
+  padding: 8px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-heading);
+  background: var(--color-surface);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+#theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Aboutの詳細表示ボタン */
+#more-about-button {
+  display: inline-block;
+  margin: 8px 0 20px;
+  padding: 10px 18px;
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+#more-about-button:hover {
+  color: #ffffff;
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* 詳細表示エリア */
+#more-about {
+  margin-bottom: 24px;
+  padding: 22px;
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  background: #ecfeff;
+}
+
+/* スクロール時のふわっと表示 */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* トップへ戻るボタン */
+#back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+#back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#back-to-top:hover {
+  background: var(--color-primary-dark);
+}
+
+/* =========================
+   Dark Mode
+========================= */
+
+body.dark-mode {
+  --color-bg: #020617;
+  --color-surface: #0f172a;
+  --color-heading: #f8fafc;
+  --color-text: #cbd5e1;
+  --color-muted: #94a3b8;
+  --color-primary: #38bdf8;
+  --color-primary-dark: #0ea5e9;
+  --color-accent: #22d3ee;
+  --color-border: #1e293b;
+  --color-footer: #020617;
+
+  background: var(--color-bg);
+}
+
+body.dark-mode header {
+  background: rgba(15, 23, 42, 0.92);
+}
+
+body.dark-mode #interests {
+  background: #07111f;
+}
+
+body.dark-mode #hobbies {
+  background: #08111f;
+}
+
+body.dark-mode #future {
+  background: linear-gradient(135deg, #0f172a, #082f49);
+}
+
+body.dark-mode #more-about {
+  background: #083344;
+}
+
+body.dark-mode #hero > p:first-child {
+  background: var(--color-surface);
+}
+
+body.dark-mode footer {
+  color: #94a3b8;
+}
+
+/* スマホでトップへ戻るボタンを少し小さくする */
+@media (max-width: 480px) {
+  #back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 42px;
+    height: 42px;
+  }
+}
