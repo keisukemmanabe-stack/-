@@ -20,17 +20,32 @@ function setupThemeToggle() {
     return;
   }
 
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+
+  updateThemeToggleButton(themeToggleButton);
+
   themeToggleButton.addEventListener("click", () => {
     const isDarkMode = document.body.classList.toggle("dark-mode");
 
-    if (isDarkMode) {
-      themeToggleButton.textContent = "☀️ Light";
-      themeToggleButton.setAttribute("aria-label", "ライトモードに切り替える");
-    } else {
-      themeToggleButton.textContent = "🌙 Dark";
-      themeToggleButton.setAttribute("aria-label", "ダークモードに切り替える");
-    }
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    updateThemeToggleButton(themeToggleButton);
   });
+}
+
+function updateThemeToggleButton(themeToggleButton) {
+  const isDarkMode = document.body.classList.contains("dark-mode");
+
+  if (isDarkMode) {
+    themeToggleButton.textContent = "☀️ Light";
+    themeToggleButton.setAttribute("aria-label", "ライトモードに切り替える");
+  } else {
+    themeToggleButton.textContent = "🌙 Dark";
+    themeToggleButton.setAttribute("aria-label", "ダークモードに切り替える");
+  }
 }
 
 // -------------------------------
